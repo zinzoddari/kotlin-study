@@ -2,9 +2,7 @@ package com.kotlin.calculator
 
 class OrderCalculator {
 
-    fun calculateTotal(items: List<Item>): Int {
-        return items.sumOf { it.getTotal() }
-    }
+    fun calculateTotal(items: List<Item>): Int = items.sumOf { it.getTotal() }
 
     fun calculateDiscount(total: Int): Int {
         return when {

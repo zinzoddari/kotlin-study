@@ -5,7 +5,5 @@ data class Item(
     val price: Int,
     val quantity: Int
 ) {
-    fun getTotal(): Int {
-        return price * quantity
-    }
+    fun getTotal() = price * quantity
 }
