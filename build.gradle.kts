@@ -11,7 +11,7 @@ description = "kotlin study project for Spring Boot"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(25)
+		languageVersion = JavaLanguageVersion.of(24)
 	}
 }
 
