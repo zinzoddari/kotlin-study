@@ -35,7 +35,7 @@ class OrderCalculatorTest {
         @DisplayName("총 합이 5만원을 넘기면, 10% 할인 가격을 가져옵니다.")
         fun totalOver50000(total: Int) {
             //given
-            val expectedResult: Int = (total * 0.1).toInt()
+            val expectedResult: Int = total * 10 / 100
 
             //when
             val result: Int = OrderCalculator().calculateDiscount(total)
@@ -49,10 +49,24 @@ class OrderCalculatorTest {
         @DisplayName("총 합이 3만원을 넘기면, 5% 할인 가격을 가져옵니다.")
         fun totalOver30000(total: Int) {
             //given
-            val expectedResult: Int = (total * 0.05).toInt()
+            val expectedResult: Int = total * 5 / 100
 
             //when
             val result: Int = OrderCalculator().calculateDiscount(total)
+
+            //then
+            assertThat(result).isEqualTo(expectedResult)
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = [0, 10000, 29999])
+        @DisplayName("3만원 미만의 경우 할인 가격이 없습니다.")
+        fun notDiscount(total: Int) {
+            //given
+            val expectedResult = 0
+
+            //when
+            val result = OrderCalculator().calculateDiscount(total)
 
             //then
             assertThat(result).isEqualTo(expectedResult)

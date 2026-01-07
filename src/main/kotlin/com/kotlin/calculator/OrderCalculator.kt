@@ -7,9 +7,9 @@ class OrderCalculator {
     }
 
     fun calculateDiscount(total: Int): Int {
-        return when (total) {
-            in 50000..Int.MAX_VALUE -> (total * 0.1).toInt()
-            in 30000.. 49999 -> (total * 0.05).toInt()
+        return when {
+            total >= 50000 -> total * 10 / 100
+            total >= 30000 -> total * 5 / 100
             else -> 0
         }
     }
@@ -19,8 +19,8 @@ class OrderCalculator {
         val discount = calculateDiscount(total)
         val answer = total - discount
 
-        println("총 주문 금액: " + total + "원")
-        println("할인 금액: " + discount + "원")
-        println("최종 결제 금액: " + answer + "원")
+        println("총 주문 금액: ${total}원")
+        println("할인 금액: ${discount}원")
+        println("최종 결제 금액: ${answer}원")
     }
 }
